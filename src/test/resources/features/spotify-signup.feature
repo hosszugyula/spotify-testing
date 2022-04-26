@@ -26,10 +26,12 @@ Feature: Spotify sign up page
     Then the '<errorMessage>' error message of the '<field>' field should be shown
 
     Examples:
-      | field             | parameter | errorMessage                                                         |
-      | Enter your email. | asd       | This email is invalid. Make sure it's written like example@email.com |
-      | Enter your email. | 123       | This email is invalid. Make sure it's written like example@email.com |
-      | Create password.  | aaa       | Your password is too short.                                          |
+      | field                    | parameter         | errorMessage                                                         |
+      | Enter your email.        | wrongtest         | This email is invalid. Make sure it's written like example@email.com |
+      | Enter your email.        | 123456789         | This email is invalid. Make sure it's written like example@email.com |
+      | Create password.         | aaab              | Your password is too short.                                          |
+      | DD                       | bc                | Enter a valid day of the month.                                      |
+      | YYYY                     | aaaa              | Enter a valid year.                                                  |
 
     @email
   Scenario: Fill email fields with valid but not equal values
@@ -38,4 +40,14 @@ Feature: Spotify sign up page
       And the Tab button is pressed
     Then the 'The email addresses don't match.' error message of the 'Enter your email again.' field should be shown
 
+    @day
+  Scenario: Fill day field with valid format but non-existent month number
+    When the 'DD' is filled in with '32'
+      And the Tab button is pressed
+    Then the 'Enter a valid day of the month.' error message of the 'DD' field should be shown
 
+    @year
+  Scenario: Fill year field with valid format but with a date less than 1900
+    When the 'YYYY' is filled in with '1899'
+      And the Tab button is pressed
+    Then the 'Enter a valid year.' error message of the 'YYYY' field should be shown
