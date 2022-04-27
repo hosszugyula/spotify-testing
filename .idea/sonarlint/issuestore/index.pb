@@ -7,3 +7,5 @@ o
 ?src/test/java/com/spotify/testing/factory/WebDriverFactory.java,6\4\648f8aa5fbf71b03c1616f3f78a4deb3f43a8a89
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+s
+Csrc/test/java/com/spotify/testing/pageobjects/CommonPageObject.java,c\d\cd52215f23b1e1a11ad6ef59f09bd4b8f9578b25

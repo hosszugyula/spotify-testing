@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class TestConfig {
     public static final long PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS = 2;
 
-    /*@Bean(destroyMethod = "closeWebDriver")
+    @Bean(destroyMethod = "closeWebDriver")
     public WebDriverFactory webDriverFactory() {
         return new WebDriverFactory();
-    }*/
+    }
 }
