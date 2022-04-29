@@ -73,7 +73,7 @@ public class SpotifySignupStepDefs {
                 .until(() -> signUpPage.getWebDriverFromFactory().findElements(
                                 By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))
                         ).size(),
-                        Matchers.is(0));
+                        Matchers.is(1));
     }
 
     @When("the {string} is filled in with {string}")
@@ -86,4 +86,5 @@ public class SpotifySignupStepDefs {
         new Actions(signUpPage.getWebDriverFromFactory()).sendKeys(Keys.TAB).build().perform();
         signUpPage.waitForPageReadiness();
     }
+
 }
