@@ -1,6 +1,7 @@
 package com.spotify.testing.pageobjects;
 
 import com.spotify.testing.factory.WebDriverFactory;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
@@ -16,22 +17,22 @@ public class PremiumPage extends CommonPageObject {
     private static final String GET_STARTED_STUDENT_URL = "https://www.spotify.com/hu/student/verification";
 
 
-    @FindBy(css = "div[class$='ButtonInner-sc-14ud5tc-0 fQivni sc-jrsJWt gNCnmw sc-kEqXSa fTvsDS']")
+    @FindBy(xpath = "//div[contains(@class, 'ButtonInner-sc-14ud5tc-0 fQivni sc-jrsJWt gNCnmw sc-kEqXSa fTvsDS')]")
     private WebElement viewPlansButton;
 
-    @FindBy(css = "div[data-event-offer-type-id$='trial-3m']")
+    @FindBy(xpath = "//a[contains(@href, 'https://www.spotify.com/purchase/offer/2022-midyear-trial-3m?marketing-campaign-id=default&country=HU') and contains(@class, 'Button-qlcn5g-0 hZbPoZ')]")
     private WebElement getStartedButtonIndividual;
 
-    @FindBy(css = "div[data-event-offer-type-id$='duo-master-trial-1m']")
+    @FindBy(xpath = "//*[contains(@href, '/hu/purchase/offer/duo-1-month-trial?country=HU') and contains(@class, 'Button-qlcn5g-0 hZbPoZ')]")
     private WebElement getStartedButtonDuo;
 
-    @FindBy(css = "div[data-event-offer-type-id$='new-family-master-trial-1m']")
+    @FindBy(xpath = "//*[contains(@href, '/hu/purchase/offer/new-family-1m?country=HU') and contains(@class, 'Button-qlcn5g-0 hZbPoZ')]")
     private WebElement getStartedButtonFamily;
 
-    @FindBy(css = "div[data-event-offer-type-id$='student-trial-1m']")
+    @FindBy(xpath = "//*[contains(@href, '/hu/student/verification') and contains(@class, 'Button-qlcn5g-0 hZbPoZ')]")
     private WebElement getStartedButtonStudent;
 
-    @FindBy(css = "div[class$='ButtonInner-sc-14ud5tc-0 eUyfdq sc-jrsJWt gNCnmw sc-kEqXSa exRBIa']")
+    @FindBy(xpath = "//div[contains(@class, 'ButtonInner-sc-14ud5tc-0 eUyfdq sc-jrsJWt gNCnmw sc-kEqXSa exRBIa')]")
     private WebElement get3MonthsFreeButton;
 
 
@@ -63,25 +64,33 @@ public class PremiumPage extends CommonPageObject {
         navigateToUrl(PREMIUM_PLANS_PAGE_URL);
     }
 
-    public void clickOnGetStartedIndividualButton() {
+    public void clickOnGetStartedIndividualButton() throws Exception {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonIndividual);
+        Thread.sleep(500);
         waitForElementToBeClickable(getStartedButtonIndividual);
         getStartedButtonIndividual.click();
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedDuoButton() {
+    public void clickOnGetStartedDuoButton() throws Exception {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonDuo);
+        Thread.sleep(500);
         waitForElementToBeClickable(getStartedButtonDuo);
         getStartedButtonDuo.click();
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedFamilyButton() {
+    public void clickOnGetStartedFamilyButton() throws Exception {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonFamily);
+        Thread.sleep(500);
         waitForElementToBeClickable(getStartedButtonFamily);
         getStartedButtonFamily.click();
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedStudentButton() {
+    public void clickOnGetStartedStudentButton() throws Exception {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonStudent);
+        Thread.sleep(500);
         waitForElementToBeClickable(getStartedButtonStudent);
         getStartedButtonStudent.click();
         waitForPageReadiness();
@@ -93,7 +102,7 @@ public class PremiumPage extends CommonPageObject {
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedButton(final String plan) {
+    public void clickOnGetStartedButton(final String plan) throws Exception {
         switch (plan) {
             case "Individual":
                 clickOnGetStartedIndividualButton();

@@ -23,28 +23,28 @@ public class SpotifyPremiumPageStepDefs {
 
 
     @And("the Premium header button is clicked")
-    public void thePremiumHeaderButtonIsClicked() {
+    public void thePremiumHeaderButtonIsClicked() throws Exception {
         homePage.clickOnPremiumButton();
     }
 
     @And("the view plans button is clicked")
-    public void theViewPlansButtonIsClicked() {
+    public void theViewPlansButtonIsClicked() throws Exception {
         premiumPage.clickOnViewPlansButton();
     }
 
     @And("the get 3 months free button is clicked")
-    public void theGet3MonthsFreeButtonIsClicked() {
+    public void theGet3MonthsFreeButtonIsClicked() throws Exception {
         premiumPage.clickOn3MonthsFreeButton();
     }
 
     @Given("the premium page is scrolled to the plans")
-    public void thePremiumPageIsScrolledToPlans() {
+    public void thePremiumPageIsScrolledToPlans() throws Exception{
         premiumPage.scrollToThePlans();
     }
 
 
     @When("the get started under {string} plan is clicked")
-    public void theGetStartedButtonIsClicked(final String plan) {
+    public void theGetStartedButtonIsClicked(final String plan) throws Exception{
         premiumPage.clickOnGetStartedButton(plan);
     }
 
