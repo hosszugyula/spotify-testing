@@ -54,6 +54,18 @@ public class SpotifySignupStepDefs {
         signUpPage.clickOnRegistrationButton();
     }
 
+    @And("the month selector is clicked")
+    public void theSelectMonthIsClicked() {signUpPage.clickOnSelectMonth(); }
+
+    @And("the male of gender options selected")
+    public void theGenderOptionIsClicked() {signUpPage.clickOnGenderOptionMale();}
+
+    @And("the accept the terms and conditions is clicked")
+    public void acceptTermsClicked() {signUpPage.clickOnAcceptTerms();}
+
+    @And("the i'm not a robot is clicked")
+    public void notRobotClicked() {signUpPage.clickOnNotRobot();}
+
     @And("^the '(.*)' error message of the '(?:.*)' (?:field|dropdown|radio buttons|checkbox) should be shown$")
     public void theErrorMessageShouldBeShown(final String message) {
         Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
