@@ -12,6 +12,9 @@ public class HomePage extends CommonPageObject {
     @FindBy(css = "header li:nth-child(5) > a")
     private WebElement registrationButton;
 
+    @FindBy(css = "header li:nth-child(6) > a")
+    private WebElement loginButton;
+
     @FindBy(css = "header li:nth-child(1) > a")
     private WebElement premiumButton;
 
@@ -30,6 +33,13 @@ public class HomePage extends CommonPageObject {
         waitForElementToBeClickable(registrationButton);
         registrationButton.click();
         waitForPageReadiness();
+    }
+
+    public void clickOnLoginButton() {
+        waitForElementToBeClickable(loginButton);
+        loginButton.click();
+        waitForPageReadiness();
+
     }
 
     public void clickOnCookieDisclaimer() {
