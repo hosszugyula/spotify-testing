@@ -2,7 +2,7 @@ Feature: Spotify premium page
 
   Background:
     Given the home page is opened
-    And the Cookie disclaimer is closed
+    #And the Cookie disclaimer is closed
     And the Premium header button is clicked
 
   Scenario:
