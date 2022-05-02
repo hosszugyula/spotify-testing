@@ -38,7 +38,7 @@ public class SignUpPage extends CommonPageObject {
     @FindBy(how = How.CSS, using = "div.Radio-tr5kfi-0")
     private WebElement genderOption;
 
-    @FindBy(how = How.XPATH, using = "//*[contains(text(),'Elfogadom a')]")
+    @FindBy(how = How.XPATH, using = "//*[contains(text(),'I agree to the')]")
     private WebElement acceptTerms;
 
     @FindBy(id = "checkbox-container")
