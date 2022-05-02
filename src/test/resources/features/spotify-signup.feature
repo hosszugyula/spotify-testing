@@ -2,7 +2,7 @@ Feature: Spotify sign up page
 
   Background:
     Given the home page is opened
-      And the Cookie disclaimer is closed
+      #And the Cookie disclaimer is closed
       And the Regisztráció header button is clicked
 
     @requiredfield
@@ -35,7 +35,7 @@ Feature: Spotify sign up page
 
     @email
   Scenario: Fill email fields with valid but not equal values
-    When the 'Enter your email.' is filled in with 'hosszugyula14@gmail.com'
+    When the 'Enter your email.' is filled in with 'hosszugyula456@gmail.com'
       And the 'Enter your email again.' is filled in with 'acsi_milan@gmail.com'
       And the Tab button is pressed
     Then the 'The email addresses don't match.' error message of the 'Enter your email again.' field should be shown
