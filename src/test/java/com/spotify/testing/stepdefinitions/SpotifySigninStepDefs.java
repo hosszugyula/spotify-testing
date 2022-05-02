@@ -40,7 +40,7 @@ public class SpotifySigninStepDefs {
                 .until(() -> signInPage.getWebDriverFromFactory().findElements(
                                 By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))
                         ).size(),
-                        Matchers.is(0));
+                        Matchers.is(1));
     }
 
     @When("the Bejelentkezés button is clicked")
