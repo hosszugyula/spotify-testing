@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 @Component
 public class PremiumPage extends CommonPageObject {
 
@@ -16,6 +18,10 @@ public class PremiumPage extends CommonPageObject {
     private static final String GET_STARTED_FAMILY_URL = "https://www.spotify.com/hu/purchase/offer/new-family-1m?country=HU";
     private static final String GET_STARTED_STUDENT_URL = "https://www.spotify.com/hu/student/verification";
 
+    private String scrollElementIntoMiddle =
+            "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
+                    + "var elementTop = arguments[0].getBoundingClientRect().top;"
+                    + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
 
     @FindBy(xpath = "//div[contains(@class, 'ButtonInner-sc-14ud5tc-0 fQivni sc-jrsJWt gNCnmw sc-kEqXSa fTvsDS')]")
     private WebElement viewPlansButton;
@@ -64,36 +70,40 @@ public class PremiumPage extends CommonPageObject {
         navigateToUrl(PREMIUM_PLANS_PAGE_URL);
     }
 
-    public void clickOnGetStartedIndividualButton() throws Exception {
-        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonIndividual);
-        Thread.sleep(500);
+    private void clickOnElement(WebElement element) {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].click()", element);
+    }
+
+    public void clickOnGetStartedIndividualButton() {
+        scrollToPlan(getStartedButtonIndividual);
         waitForElementToBeClickable(getStartedButtonIndividual);
-        getStartedButtonIndividual.click();
+        clickOnElement(getStartedButtonIndividual);
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedDuoButton() throws Exception {
-        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonDuo);
-        Thread.sleep(500);
+    public void clickOnGetStartedDuoButton() {
+        scrollToPlan(getStartedButtonDuo);
         waitForElementToBeClickable(getStartedButtonDuo);
-        getStartedButtonDuo.click();
+        clickOnElement(getStartedButtonDuo);
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedFamilyButton() throws Exception {
-        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonFamily);
-        Thread.sleep(500);
+    public void clickOnGetStartedFamilyButton() {
+        scrollToPlan(getStartedButtonFamily);
         waitForElementToBeClickable(getStartedButtonFamily);
-        getStartedButtonFamily.click();
+        clickOnElement(getStartedButtonFamily);
         waitForPageReadiness();
     }
 
-    public void clickOnGetStartedStudentButton() throws Exception {
-        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript("arguments[0].scrollIntoView(true);", getStartedButtonStudent);
-        Thread.sleep(500);
+    public void clickOnGetStartedStudentButton() {
+        scrollToPlan(getStartedButtonStudent);
         waitForElementToBeClickable(getStartedButtonStudent);
-        getStartedButtonStudent.click();
+        clickOnElement(getStartedButtonStudent);
         waitForPageReadiness();
+    }
+
+    private void scrollToPlan(WebElement element) {
+        ((JavascriptExecutor) getWebDriverFromFactory()).executeScript(scrollElementIntoMiddle, element);
     }
 
     public void clickOn3MonthsFreeButton() {
