@@ -7,7 +7,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -21,30 +20,29 @@ public class SpotifyPremiumPageStepDefs {
     @Autowired
     private PremiumPage premiumPage;
 
-
     @And("the Premium header button is clicked")
     public void thePremiumHeaderButtonIsClicked() throws Exception {
         homePage.clickOnPremiumButton();
     }
 
     @And("the view plans button is clicked")
-    public void theViewPlansButtonIsClicked() throws Exception {
+    public void theViewPlansButtonIsClicked() {
         premiumPage.clickOnViewPlansButton();
     }
 
     @And("the get 3 months free button is clicked")
-    public void theGet3MonthsFreeButtonIsClicked() throws Exception {
+    public void theGet3MonthsFreeButtonIsClicked() {
         premiumPage.clickOn3MonthsFreeButton();
     }
 
     @Given("the premium page is scrolled to the plans")
-    public void thePremiumPageIsScrolledToPlans() throws Exception{
+    public void thePremiumPageIsScrolledToPlans() {
         premiumPage.scrollToThePlans();
     }
 
 
     @When("the get started under {string} plan is clicked")
-    public void theGetStartedButtonIsClicked(final String plan) throws Exception{
+    public void theGetStartedButtonIsClicked(final String plan) throws Exception {
         premiumPage.clickOnGetStartedButton(plan);
     }
 
