@@ -72,5 +72,5 @@ Feature: Spotify sign up page
       And the male of gender options selected
       And it is scrolled down
       And the accept the terms and conditions is clicked
-      And the i'm not a robot is clicked
+      #And the i'm not a robot is clicked
       Then the Regisztráció button is clicked
